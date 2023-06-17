@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Edit note{% endblock %}
+
+{% block content %}
+<form action="{% url 'note_update' id=note_id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+{% endblock %}
+
+{% block rightcontent %}
+  <div class="col-md-4">
+    <div class="content-section">
+      <h3>Others notes</h3>
+      {% for note in notes|slice:":5" %}
+      <ul>
+        <li><a href="{% url 'note' id=note.id %}">{{ note.title }}</a></li>
+      </ul>
+      {% endfor %}
+    </div>
+  </div>    
+{% endblock %}
+

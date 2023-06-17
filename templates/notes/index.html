@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %} MyNotes {% endblock %}
+
+{% block content %}
+{% if notes %}
+ {% for note in notes reversed %}   
+       <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <small class="text-muted">{{ note.timestamp|date:"F d, Y" }}</small>
+            </div>
+
+        <h2><a class="article-title" href="{{ note.id }}">{{ note.title }}</a></h2>
+        <div>{{ note.body|slice:":300" }}...</div>
+         
+        <form action="{% url 'note_destroy' id=note.id %}" method="post" style="text-align: right">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+        </form>
+          </div>
+        </article>
+       
+  {% endfor %}   
+   {% endif %}
+   
+{% endblock %}
+
+{% block rightcontent %}
+  <div class="col-md-4">
+    <div class="content-section">
+      <h3>MyNotes</h3>
+        {% for note in notes reversed %}   
+        <ul>
+          <li><a href="{% url 'note' id=note.id %}">{{ note.title }}</a></li>
+        </ul>
+        {% endfor %}
+    </div>
+  </div>        
+{% endblock %}
+
+
+
+   
+

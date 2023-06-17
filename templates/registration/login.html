@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} Log In {% endblock %}
+{% block secondtitle %}<h2 style="text-align: center;">Log In</h2>{% endblock %}
+{% block content %}
+<article class="media content-section">
+  <div class="media-body">
+    <form style="text-align: center;" method="POST" id="login-form"> 
+      {% csrf_token %} 
+      Username        
+      <p>{{form.username}}</p>
+      Password
+      <p>{{form.password}}</p> 
+      <input type="submit" class="submit" value="Submit"> 
+    </form> 
+  </div>
+</article>
+{% endblock %}
+
+{% block rightcontent %}
+<div class="col-md-4">
+  <div class="content-section">
+    <h5 style="text-align: center;">Not registered yet?</h5>
+    <a class="nav-item nav-link" style="text-align: center;" href="{% url 'signup' %}">Registration</a>
+  </div>
+  <div style="text-align: center;">
+    <a href="{% url 'home' %}">Back to Home</a>
+  </div>
+</div>        
+{% endblock %}
+

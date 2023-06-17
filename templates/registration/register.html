@@ -1,0 +1,43 @@
+{% extends "base.html" %} 
+{% block title %} Registration {% endblock %}
+{% block secondtitle %}<h2 style="text-align: center;">Registration</h2>{% endblock %}
+
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+      <form style="text-align: center;" method="POST" id="signup-form"> 
+        {% csrf_token %} 
+        Username        
+        <p>{{form.username}}</p>
+        Password
+        <p>{{form.password1}}</p> 
+        Repeat Password
+        <p>{{form.password2}}</p> 
+        <input type="submit" class="submit" value="Signup"> 
+      </form> 
+    </div>
+  </article>
+{% endblock %}
+
+{% block rightcontent %}
+<div class="col-md-4">
+  <div class="content-section">
+    {% if errors %}
+    <h5 style="text-align: center;">Error</h5>
+    {% for key, error in errors.items %}
+    <span style="color:red">{{ error }}</span>  
+    {% endfor %}
+    {% endif %}
+    <h5 style="text-align: center;">Tip</h5 >
+    <ul>
+      <li>Your password must contain at least 8 characters. Contains numeric and letters</li>
+    </ul>        
+  </div>
+  <div style="text-align: center;">
+    <a href="{% url 'login' %}">Back to Login</a>&#32;|&#32;<a href="{% url 'home' %}">Back to Home</a>
+  </div>
+</div>            
+{% endblock %}
+   
+  
+                

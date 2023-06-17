@@ -1,0 +1,40 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block title %} About {% endblock %}  
+
+{% block content %}
+    <div class="content-section"">
+      <h5 style="text-align: center;">Hi everyone!</h5>
+      <p>This is my educational, not a commercial project. </p>
+      <p>You can also use this application. But:</p>
+      <p>
+      <ul>
+        <li>If you forget your password, you will lose access to your notes.</li>
+        <li>I`m not responsible for keeping your records, etc. I don't care what you write there.</li>
+      </ul>
+      </p>
+      <p>If there are any questions:
+       <ul>
+        <li><a href="https://potapov.site">My site</a></li>
+        <li>stripedbear[at]tutanota.com</li>
+        <li><a href="https://t.me/stripedbear">Telegram</a></li>
+      </ul>
+      </p>
+    </div>
+{% endblock content %}
+
+{% block rightcontent %}
+<div class="col-md-4">
+  <div class="content-section">
+    <h5 style="text-align: center;">Check notes</h5>
+    <a class="nav-item nav-link" style="text-align: center;" href="{% url 'login' %}">Log In</a>
+    <h5 style="text-align: center;">Or not registered yet?</h5>
+    <a class="nav-item nav-link" style="text-align: center;" href="{% url 'signup' %}">Registration</a>
+  </div>
+  <div style="text-align: center;">
+    <a href="{% url 'home' %}">Back to Home</a>
+  </div>
+</div>        
+{% endblock %}
+
+   

@@ -1,0 +1,30 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block content %}
+<html>
+  <head>
+  </head>
+  <body>
+    <div class="content-section" style="text-align: center;">
+      <h1>No need to worry with SimpleNotes.</h1>
+      <p> Easy, good.</p>
+    </div>
+
+    <div style="text-align: center;">
+    {% if not user.is_authenticated %}
+      <a href="{% url 'signup' %}">Sign Up</a>
+      |
+      <a href="{% url 'login' %}">Login</a>
+      {% endif %}
+    </div>
+  </body>
+</html>
+{% endblock content %}
+
+{% block rightcontent %}
+    <div class="col-md-4">
+    <img src="{% static 'img/title.png'%}" width='300'>
+    </div>
+{% endblock %}
+   

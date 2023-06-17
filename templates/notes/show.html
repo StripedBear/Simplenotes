@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} {{ note.title }} {% endblock %}
+{% block content %}
+	<div class="article-metadata">
+     <small class="text-muted">{{ note.timestamp|date:"F d, Y" }}</small>
+  </div>
+	<h1>{{ note.title }} </h1>
+	<div> {{ note.body }} </div>
+{% endblock %}
+
+{% block rightcontent %}
+  <div class="col-md-4">
+    <div class="content-section">
+      <h3>SimpleSets</h3>
+        <ul>
+          <li><a href="{% url 'note_update' id=note.id %}">Edit</a></li>
+          <li><a href="{% url 'note_destroy' id=note.id %}">Delete</a></li>
+        </ul>
+        <br></br>
+        <h3>Others notes</h3>
+        {% for note in notes|slice:":5" %}
+        <ul>
+          <li><a href="{% url 'note' id=note.id %}">{{ note.title }}</a></li>
+        </ul>
+        {% endfor %}
+      </div>
+    </div>    
+{% endblock %}
